@@ -1,0 +1,24 @@
+Photos downloaded from Wikimedia Commons for: El Alamein Military Museum
+Query: El Alamein Military Museum
+
+
+--- retry pass ---
+
+File: 04_Cemetery at El Alamein - Flickr - heatheronhertravels.jpg
+Title: File:Cemetery at El Alamein - Flickr - heatheronhertravels.jpg
+License: CC BY 2.0
+Author: Heather Cowper from Bristol, UK
+Source page: https://commons.wikimedia.org/wiki/File%3ACemetery_at_El_Alamein_-_Flickr_-_heatheronhertravels.jpg
+
+File: 06_Museum at El Alamein - Flickr - heatheronhertravels.jpg
+Title: File:Museum at El Alamein - Flickr - heatheronhertravels.jpg
+License: CC BY 2.0
+Author: Heather Cowper from Bristol, UK
+Source page: https://commons.wikimedia.org/wiki/File%3AMuseum_at_El_Alamein_-_Flickr_-_heatheronhertravels.jpg
+
+File: 08_Cemetery at El Alamein - Flickr - heatheronhertravels (2).jpg
+Title: File:Cemetery at El Alamein - Flickr - heatheronhertravels (2).jpg
+License: CC BY 2.0
+Author: Heather Cowper from Bristol, UK
+Source page: https://commons.wikimedia.org/wiki/File%3ACemetery_at_El_Alamein_-_Flickr_-_heatheronhertravels_%282%29.jpg
+

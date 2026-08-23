@@ -1,0 +1,24 @@
+Photos downloaded from Wikimedia Commons for: Cleopatra Spring
+Query: Cleopatra spring Siwa
+
+
+--- retry pass ---
+
+File: 01_Cleopatra_s Pool - Spring of Juba.jpg
+Title: File:Cleopatra's Pool - Spring of Juba.jpg
+License: CC BY-SA 4.0
+Author: Ahmed Emad Hamdy
+Source page: https://commons.wikimedia.org/wiki/File%3ACleopatra%27s_Pool_-_Spring_of_Juba.jpg
+
+File: 02_Siwa Oasis_ Cleopatra_s Bath_ Egypt.jpg
+Title: File:Siwa Oasis, Cleopatra's Bath, Egypt.jpg
+License: CC BY 4.0
+Author: Vyacheslav Argenberg
+Source page: https://commons.wikimedia.org/wiki/File%3ASiwa_Oasis%2C_Cleopatra%27s_Bath%2C_Egypt.jpg
+
+File: 04_Cleopatra spring of water in Siwa.jpg
+Title: File:Cleopatra spring of water in Siwa.jpg
+License: CC BY-SA 4.0
+Author: Sara Nabih
+Source page: https://commons.wikimedia.org/wiki/File%3ACleopatra_spring_of_water_in_Siwa.jpg
+

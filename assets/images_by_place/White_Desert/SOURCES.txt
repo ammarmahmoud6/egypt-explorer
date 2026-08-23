@@ -1,0 +1,24 @@
+Photos downloaded from Wikimedia Commons for: White Desert
+Query: Category:White Desert, Egypt
+
+
+--- retry pass ---
+
+File: 01_White Desert_ Rock formations in desert landscape_ Egypt.jpg
+Title: File:White Desert, Rock formations in desert landscape, Egypt.jpg
+License: CC BY 4.0
+Author: Vyacheslav Argenberg
+Source page: https://commons.wikimedia.org/wiki/File%3AWhite_Desert%2C_Rock_formations_in_desert_landscape%2C_Egypt.jpg
+
+File: 02_White Desert_ Al-Farafra-Al-Bahariya road through the desert_ Egypt.jpg
+Title: File:White Desert, Al-Farafra-Al-Bahariya road through the desert, Egypt.jpg
+License: CC BY 4.0
+Author: Vyacheslav Argenberg
+Source page: https://commons.wikimedia.org/wiki/File%3AWhite_Desert%2C_Al-Farafra-Al-Bahariya_road_through_the_desert%2C_Egypt.jpg
+
+File: 03_White Desert_ Farafra depression_ Egypt.jpg
+Title: File:White Desert, Farafra depression, Egypt.jpg
+License: CC BY 4.0
+Author: Vyacheslav Argenberg
+Source page: https://commons.wikimedia.org/wiki/File%3AWhite_Desert%2C_Farafra_depression%2C_Egypt.jpg
+

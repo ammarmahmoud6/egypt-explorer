@@ -1,0 +1,360 @@
+Egypt Tourism Project - Image Sources
+
+This folder contains the requested structure for 50 tourist places, with 5 PNG filenames per place.
+The PNG files are placeholders; real images should be added after checking the source license.
+
+Suggested source collection: Wikimedia Commons - Tourism in Egypt:
+https://commons.wikimedia.org/wiki/Category:Tourism_in_Egypt
+
+Wikimedia Commons states that file licenses are specified on each file's description page.
+Check the individual file page/license and attribution requirements before using any image in the college project.
+
+Pyramids_of_Giza:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Khan_El_Khalili:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Egyptian_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Citadel_of_Cairo:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Al_Azhar_Mosque:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Cairo_Tower:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Al_Azhar_Park:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Coptic_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Hanging_Church:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Abdeen_Palace:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Manial_Palace:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Baron_Palace:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+National_Museum_of_Egyptian_Civilization:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Museum_of_Islamic_Art:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Salah_El_Din_Citadel:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Bibliotheca_Alexandrina:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Qaitbay_Citadel:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Montaza_Palace:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Royal_Jewelry_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Catacombs_of_Kom_El_Shoqafa:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Pompeys_Pillar:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Roman_Amphitheatre:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Alexandria_National_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Stanley_Bridge:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Alexandria_Corniche:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Luxor_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Karnak_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Valley_of_the_Kings:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Valley_of_the_Queens:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Colossi_of_Memnon:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Hatshepsut_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Luxor_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Medinet_Habu:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Philae_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Nubian_Museum:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Unfinished_Obelisk:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Elephantine_Island:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Aswan_High_Dam:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Nubian_Village:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Abu_Simbel_Temples:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Dendera_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Abydos_Temple:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Siwa_Oasis:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Cleopatras_Spring:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+White_Desert:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Black_Desert:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Wadi_El_Hitan:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Ras_Mohammed_National_Park:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+Naama_Bay:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+
+St_Catherine_Monastery:
+  1.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  2.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  3.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  4.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]
+  5.png -> Source URL: [to be filled] | License: [to be checked] | Author: [to be filled]

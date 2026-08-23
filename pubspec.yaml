@@ -1,0 +1,145 @@
+name: final_project
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.8
+
+  # State management
+  provider: ^6.1.2
+
+  # HTTP client for the Python Flask backend
+  http: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  assets:
+    # WhatsApp-dump photos (matched to places in image_place_mapping.md)
+    - assets/images/
+    # Real photos organized by place (Wikimedia Commons; see SOURCES.txt
+    # inside each folder for attribution).
+    # NOTE: Flutter does NOT recurse into subdirectories when a folder is
+    # declared, so each subfolder must be listed explicitly.
+    - assets/images_by_place/Cleopatra_Spring/
+    - assets/images_by_place/Colossi_of_Memnon/
+    - assets/images_by_place/Coptic_Museum/
+    - assets/images_by_place/Dahab_Blue_Hole/
+    - assets/images_by_place/Dendera_Temple/
+    - assets/images_by_place/El_Alamein_Military_Museum/
+    - assets/images_by_place/Hanging_Church/
+    - assets/images_by_place/Hurghada_Marina/
+    - assets/images_by_place/Royal_Jewelry_Museum/
+    - assets/images_by_place/Salah_El-Din_Citadel/
+    - assets/images_by_place/Valley_of_the_Queens/
+    - assets/images_by_place/Wadi_El_Hitan/
+    - assets/images_by_place/White_Desert/
+    # Real photos organized by place (Wikimedia Commons; see sources.txt)
+    # Individual files for folders containing some non-ASCII filenames that
+    # Windows cannot bundle; only the actually-used files are listed.
+    - assets/images/Egypt_Tourism_Images/Abdeen_Palace/Abdeen_Palace.jpg
+    - assets/images/Egypt_Tourism_Images/Abdeen_Palace/Abdeen_Palace_Cairo_(52886181378).jpg
+    - assets/images/Egypt_Tourism_Images/Abdeen_Palace/Abdeen_Palace_Cairo_(52891275732).jpg
+    - assets/images/Egypt_Tourism_Images/Abdeen_Palace/Abdeen_Palace_Cairo_(52892014274).jpg
+    - assets/images/Egypt_Tourism_Images/Abu_Simbel_Temples/Templo_de_Nefertari,_Abu_Simbel,_Egipto,_2022-04-02,_DD_140-142_HDR.jpg
+    - assets/images/Egypt_Tourism_Images/Abu_Simbel_Temples/Templo_de_Nefertari,_Abu_Simbel,_Egipto,_2022-04-02,_DD_153.jpg
+    - assets/images/Egypt_Tourism_Images/Abydos_Temple/
+    - assets/images/Egypt_Tourism_Images/Al_Azhar_Mosque/
+    - assets/images/Egypt_Tourism_Images/Al_Azhar_Park/
+    - assets/images/Egypt_Tourism_Images/Alexandria_Corniche/
+    - assets/images/Egypt_Tourism_Images/Alexandria_National_Museum/
+    - assets/images/Egypt_Tourism_Images/Aswan_High_Dam/
+    - assets/images/Egypt_Tourism_Images/Baron_Palace/
+    - assets/images/Egypt_Tourism_Images/Bibliotheca_Alexandrina/Bibliotheca_Alexandrina_(2007-05-028).jpg
+    - assets/images/Egypt_Tourism_Images/Bibliotheca_Alexandrina/Bibliotheca_Alexandrina_06.jpg
+    - assets/images/Egypt_Tourism_Images/Bibliotheca_Alexandrina/Bibliotheca_Alexandrina_34.jpg
+    - assets/images/Egypt_Tourism_Images/Bibliotheca_Alexandrina/Coast_of_Alexandria,_A_view_From_Bibliotheca_Alexandrina,_Egypt.jpg
+    - assets/images/Egypt_Tourism_Images/Black_Desert/
+    - assets/images/Egypt_Tourism_Images/Cairo_Tower/Cairo,_Egypt_(1990284866).jpg
+    - assets/images/Egypt_Tourism_Images/Cairo_Tower/Cairo,_Tower_of_Cairo,_Egypt,_Oct_2004.jpg
+    - assets/images/Egypt_Tourism_Images/Cairo_Tower/Cairo_Tower_Egypt.jpg
+    - assets/images/Egypt_Tourism_Images/Cairo_Tower/Cairo_Tower_at_night_(187m._high)_(14613470840).jpg
+    - assets/images/Egypt_Tourism_Images/Catacombs_of_Kom_El_Shoqafa/113KOM_EL_SHOQAFA_CATACOMBS.jpg
+    - assets/images/Egypt_Tourism_Images/Catacombs_of_Kom_El_Shoqafa/Catacombs_of_Kom_al_Shugafa_4.jpg
+    - assets/images/Egypt_Tourism_Images/Catacombs_of_Kom_El_Shoqafa/Catacombs_of_Kom_El_Shoqafa,_Alexandria,_Egypt.jpg
+    - assets/images/Egypt_Tourism_Images/Catacombs_of_Kom_El_Shoqafa/The_Tomb_from_Tigrane_Pasha_Street,_Catacombs_of_Kom_El_Shoqafa,_Alexandria,_Egypt.jpg
+    - assets/images/Egypt_Tourism_Images/Citadel_of_Cairo/Cairo_Citadel_2026.jpg
+    - assets/images/Egypt_Tourism_Images/Citadel_of_Cairo/Scenes_from_Cairo_Citadel_(59407).jpg
+    - assets/images/Egypt_Tourism_Images/Citadel_of_Cairo/Scenes_from_Cairo_Citadel_(84895).jpg
+    - assets/images/Egypt_Tourism_Images/Citadel_of_Cairo/Scenes_from_Cairo_Citadel_7.jpg
+    - assets/images/Egypt_Tourism_Images/Pyramids_of_Giza/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/to/resolution-aware-images
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/to/asset-from-package
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package
