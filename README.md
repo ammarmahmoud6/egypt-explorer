@@ -2,9 +2,34 @@
 
 A Flutter application with a Python (Flask) backend.
 
-## Running the app locally (Windows)
+## Running the app
 
-To run the app locally, double-click `start.bat` in the project root. This starts the Python backend and the Flutter app together. Leave both windows open while using the app; closing either one stops that part.
+The app talks to a live backend hosted at `http://ammar5555.pythonanywhere.com` by default — no flags or local server needed.
+
+To run it (Windows or any OS with Flutter installed):
+
+```
+flutter run -d chrome
+```
+
+Or on Windows, just double-click `start.bat` in the project root.
+
+You can still point the app at any other backend URL at build time:
+
+```
+flutter run -d chrome --dart-define=BACKEND_URL=https://your-url.example.com
+```
+
+## Backend development
+
+The backend lives in `backend/`. If you ever need to run it manually (e.g. to test changes before redeploying to PythonAnywhere):
+
+```
+cd backend
+python app.py
+```
+
+Then point the app at it with `flutter run -d chrome --dart-define=BACKEND_URL=http://localhost:5000`.
 
 ## Getting Started
 

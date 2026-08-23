@@ -46,10 +46,12 @@ Render's "Blueprint" flow — it reads the same settings automatically.)
 
 ## Point the Flutter app at it
 
-Run/build the app with:
+The app defaults to the deployed backend at
+`http://ammar5555.pythonanywhere.com`, so `flutter run -d chrome` works out of
+the box.
+
+To point it elsewhere (e.g. a local Flask server during development), use:
 
 ```bash
-flutter run --dart-define=BACKEND_URL=https://your-app.onrender.com
+flutter run --dart-define=BACKEND_URL=http://localhost:5000
 ```
-
-Local dev default is `http://localhost:5000`.

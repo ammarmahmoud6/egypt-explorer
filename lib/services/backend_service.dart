@@ -4,15 +4,16 @@
 /// (`backend/earthquake_logic.py`, `backend/simulation.py`) — this service
 /// calls them over REST instead of using any Dart-side port.
 ///
-/// The base URL is read from a compile-time constant so it is never hardcoded:
+/// The base URL is read from a compile-time constant so it can be overridden:
 ///
 /// ```
-/// flutter run --dart-define=BACKEND_URL=https://your-app.onrender.com
-/// flutter build web --dart-define=BACKEND_URL=https://your-app.onrender.com
+/// flutter run --dart-define=BACKEND_URL=http://localhost:5000
+/// flutter build web --dart-define=BACKEND_URL=http://localhost:5000
 /// ```
 ///
-/// Defaults to `http://localhost:5000` for local development (run the Flask
-/// app with `python app.py` inside `backend/`).
+/// Defaults to the deployed backend at `http://ammar5555.pythonanywhere.com`.
+/// For local backend development, run the Flask app with `python app.py`
+/// inside `backend/` and pass `--dart-define=BACKEND_URL=http://localhost:5000`.
 library;
 
 import 'dart:convert';
@@ -21,7 +22,7 @@ import 'package:final_project/data/egypt_data.dart';
 import 'package:final_project/data/place_images.dart';
 import 'package:http/http.dart' as http;
 
-const String _kDefaultBaseUrl = 'http://localhost:5000';
+const String _kDefaultBaseUrl = 'http://ammar5555.pythonanywhere.com';
 
 String get backendBaseUrl =>
     const String.fromEnvironment('BACKEND_URL', defaultValue: _kDefaultBaseUrl);
