@@ -12,6 +12,9 @@
 .swiftpm/
 migrate_working_dir/
 
+# Backend runtime state (created at startup)
+/backend/visited.txt
+
 # IntelliJ related
 *.iml
 *.ipr

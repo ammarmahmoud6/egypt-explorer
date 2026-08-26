@@ -11,6 +11,8 @@ No logic is reimplemented here; endpoints just call the existing functions
 and serialize the results as JSON.
 """
 
+import os
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -21,6 +23,40 @@ import map_coordinates
 
 app = Flask(__name__)
 CORS(app)  # allow cross-origin requests from Flutter web
+
+# ── Visited Places persistence ────────────────────────────────────────────
+# The list of "visited" place names is stored in a local text file so it
+# survives backend restarts. The file lives next to this script.
+VISITED_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visited.txt")
+
+
+def load_visited_from_file():
+    """Read visited place names from visited.txt (creating it if missing).
+
+    Returns a list of non-empty, stripped lines. Pathological lines (blank)
+    and duplicates are filtered out.
+    """
+    if not os.path.exists(VISITED_FILE):
+        open(VISITED_FILE, "w", encoding="utf-8").close()
+        return []
+    visited = []
+    with open(VISITED_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            name = line.strip()
+            if name and name not in visited:
+                visited.append(name)
+    return visited
+
+
+def save_visited_to_file(visited_list):
+    """Overwrite visited.txt with the given list of visited places, one per line."""
+    with open(VISITED_FILE, "w", encoding="utf-8") as f:
+        for name in visited_list:
+            f.write(name + "\n")
+
+
+# Global visited-places list, loaded once at server startup.
+visited_places = load_visited_from_file()
 
 
 @app.route("/")
@@ -38,6 +74,8 @@ def home():
         ("/api/crowd/visitors?capacity=500&crowd=60", "Visitors calculator (capacity=500, crowd=60)"),
         ("/api/crowd/status?crowd=60", "Crowd status for crowd=60"),
         ("/api/earthquake-events", "Earthquake event definitions (Cairo 1992 / Suez 2026)"),
+        ("/api/visited", "List of visited places (persisted in visited.txt)"),
+        ("/api/visited", "Toggle a place as visited (POST body: {\"name\": \"<place>\"})"),
     ]
     links = "".join(
         f'<li><a href="{href}">{href}</a> — {label}</li>' for href, label in endpoints
@@ -132,6 +170,37 @@ def api_crowd_status():
     except (KeyError, ValueError):
         return jsonify({"error": "query param crowd is a required number"}), 400
     return jsonify({"status": get_crowd_status(crowd)})
+
+
+@app.route("/api/visited", methods=["GET"])
+def api_visited_get():
+    """Return the current list of visited place names."""
+    return jsonify({"visited": visited_places})
+
+
+@app.route("/api/visited", methods=["POST"])
+def api_visited_toggle():
+    """Toggle a place in the visited list and persist it to visited.txt.
+
+    Body: {"name": "<place_name>"}
+    Returns {"status": "added"|"removed", "visited": [...]}.
+    """
+    data = request.get_json(silent=True) or {}
+    name = (data.get("name") or "").strip()
+    if not name:
+        return jsonify({"error": "a non-empty 'name' field is required"}), 400
+
+    if name in visited_places:
+        visited_places.remove(name)
+        status = "removed"
+    else:
+        visited_places.append(name)
+        status = "added"
+
+    # Persist immediately so the change survives a restart.
+    save_visited_to_file(visited_places)
+
+    return jsonify({"status": status, "visited": visited_places})
 
 
 if __name__ == "__main__":

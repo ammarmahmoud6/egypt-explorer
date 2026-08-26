@@ -344,6 +344,124 @@ places = {
         'image':['NTI/Egypt earthquakes/framebird-converted/naama pay/download (3).png', 'NTI/Egypt earthquakes/framebird-converted/naama pay/Naama Bay Sunset Magic in Sharm El Sheikh,.png', 'NTI/Egypt earthquakes/framebird-converted/naama pay/Nama bay Egypt.png']
     },
 
+# ==========================================
+# Additional major sites (lust).
+# These entries were missing from data.py but each has a photo mapping in
+# lib/data/place_images.dart, so they are added to keep the datasets in sync.
+# ==========================================
+
+    "Abu Simbel Temples": {
+        "lat": 22.3364,
+        "lon": 31.6258,
+        "capacity": 8000,   # estimated (UNESCO site, visitor quotas)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Al-Azhar Mosque": {
+        "lat": 30.0459,
+        "lon": 31.2625,
+        "capacity": 5000,   # estimated (mosque & grounds)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Cleopatra's Spring": {
+        "lat": 29.2039,
+        "lon": 25.5310,
+        "capacity": 1500,   # estimated (Siwa hot spring)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Colossi of Memnon": {
+        "lat": 25.7206,
+        "lon": 32.6106,
+        "capacity": 2000,   # estimated (open-air Theban site)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Coptic Museum": {
+        "lat": 30.0061,
+        "lon": 31.2307,
+        "capacity": 1200,   # estimated (museum size)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Dahab Blue Hole": {
+        "lat": 28.5725,
+        "lon": 34.5361,
+        "capacity": 2500,   # estimated (diving site)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Dendera Temple": {
+        "lat": 26.1417,
+        "lon": 32.6700,
+        "capacity": 4000,   # estimated (temple complex)
+        "crowd": 0,
+        'image': []
+    },
+
+    "El Alamein Military Museum": {
+        "lat": 30.8278,
+        "lon": 28.9550,
+        "capacity": 2000,   # estimated (museum size)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Elephantine Island": {
+        "lat": 24.1114,
+        "lon": 32.8893,
+        "capacity": 2500,   # estimated (island heritage site)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Giftun Island": {
+        "lat": 27.1700,
+        "lon": 33.8500,
+        "capacity": 6000,   # estimated (marine park / boat visitors)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Medinet Habu": {
+        "lat": 25.7196,
+        "lon": 32.6011,
+        "capacity": 3000,   # estimated (temple complex)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Montaza Palace": {
+        "lat": 31.2417,
+        "lon": 30.0086,
+        "capacity": 4000,   # estimated (palace gardens)
+        "crowd": 0,
+        'image': []
+    },
+
+    "Royal Jewelry Museum": {
+        "lat": 31.2105,
+        "lon": 29.9079,
+        "capacity": 1200,   # estimated (museum size)
+        "crowd": 0,
+        'image': []
+    },
+
+    "St. Catherine Monastery": {
+        "lat": 28.5562,
+        "lon": 33.9762,
+        "capacity": 2000,   # estimated (heritage monastery)
+        "crowd": 0,
+        'image': []
+    },
+
 }
 important_places = {
     "Pyramids of Giza"  :{'coords': (29.9792,30.4342), 'image' : 'NTI/Egypt earthquakes/framebird-converted/pyramids/All_Gizah_Pyramids.png'},
