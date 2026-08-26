@@ -30,11 +30,10 @@ class _TourismMapView extends StatefulWidget {
 }
 
 class _TourismMapViewState extends State<_TourismMapView> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  // Below this width the visited-places list becomes a collapsible end drawer
-  // instead of a permanent right-hand panel, so the map keeps the screen on
-  // mobile devices ("Tourist Places (n)" still drives the AppBar title).
+  // Below this width the whole page becomes vertically scrollable so the map
+  // can keep a generous, comfortable height instead of being squeezed into
+  // whatever space the phone leaves over ("Tourist Places (n)" still drives
+  // the AppBar title).
   static const double _narrowBreakpoint = 700;
 
   @override
@@ -47,28 +46,10 @@ class _TourismMapViewState extends State<_TourismMapView> {
         final appBar = AppBar(
           // Dynamic count of places returned by the current search filter.
           title: Text('Tourist Places (${provider.filteredPlaces.length})'),
-          actions: [
-            // On narrow screens the visited panel lives in an end drawer.
-            if (isNarrow)
-              IconButton(
-                tooltip: 'Visited Places',
-                icon: const Icon(Icons.travel_explore),
-                onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
-              ),
-          ],
         );
 
         return Scaffold(
-          key: _scaffoldKey,
           appBar: appBar,
-          endDrawer: isNarrow
-              ? Drawer(
-                  child: _VisitedPlacesPanel(
-                    provider: provider,
-                    onClose: () => Navigator.of(context).pop(),
-                  ),
-                )
-              : null,
           body: Column(
             children: [
               Padding(
@@ -83,23 +64,54 @@ class _TourismMapViewState extends State<_TourismMapView> {
                 ),
               ),
               Expanded(
-                // Map occupies ~80% (flex 4); the visited panel ~20% (flex 1).
-                child: Row(
-                  children: [
-                    Expanded(flex: 4, child: _buildMap(context, provider)),
-                    if (!isNarrow)
-                      Expanded(
-                        flex: 1,
-                        child: _VisitedPlacesPanel(provider: provider),
+                // Narrow screens: the whole area scrolls vertically. The map is
+                // given a tall, fixed height so it fits comfortably and is not
+                // clipped; the visited panel scrolls into view below it.
+                //
+                // Wide screens: keep the side-by-side layout with the map on the
+                // left (~80%, flex 4) and the visited panel on the right (flex 1).
+                child: isNarrow
+                    ? SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: _mapHeight(context),
+                              width: double.infinity,
+                              child: _buildMap(context, provider),
+                            ),
+                            // Fixed height so the panel's internal list gets
+                            // bounded constraints (required by its Expanded).
+                            SizedBox(
+                              height: 320,
+                              child: _VisitedPlacesPanel(provider: provider),
+                            ),
+                          ],
+                        ),
+                      )
+                    : Row(
+                        children: [
+                          Expanded(flex: 4, child: _buildMap(context, provider)),
+                          Expanded(
+                            flex: 1,
+                            child: _VisitedPlacesPanel(provider: provider),
+                          ),
+                        ],
                       ),
-                  ],
-                ),
               ),
             ],
           ),
         );
       },
     );
+  }
+
+  /// Height used for the map on the narrow (scrollable) layout. It matches the
+  /// available screen height so the map stays comfortably large; because the
+  /// visited panel sits below it the page scrolls to reveal both.
+  double _mapHeight(BuildContext context) {
+    final available =
+        MediaQuery.sizeOf(context).height - MediaQuery.paddingOf(context).top;
+    return available.clamp(360.0, 1200.0).toDouble();
   }
 
   Widget _buildMap(BuildContext context, TourismProvider provider) {
@@ -571,15 +583,12 @@ class _PlaceBottomSheet extends StatelessWidget {
 /// Panel listing the places the user has marked as visited. Each entry can be
 /// tapped to remove it (toggling it off on the backend).
 ///
-/// Used either as a persistent right-hand column on wide screens or inside an
-/// end drawer on narrow / mobile screens (via [onClose]).
+/// Used as a persistent right-hand column on wide screens or as an inline block
+/// below the scrollable map on narrow / mobile screens.
 class _VisitedPlacesPanel extends StatelessWidget {
   final TourismProvider provider;
 
-  /// Optional callback shown as a close button (used in the narrow drawer).
-  final VoidCallback? onClose;
-
-  const _VisitedPlacesPanel({required this.provider, this.onClose});
+  const _VisitedPlacesPanel({required this.provider});
 
   @override
   Widget build(BuildContext context) {
@@ -596,21 +605,9 @@ class _VisitedPlacesPanel extends StatelessWidget {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Visited Places',
-                          style: theme.textTheme.titleMedium,
-                        ),
-                      ),
-                      if (onClose != null)
-                        IconButton(
-                          tooltip: 'Close',
-                          icon: const Icon(Icons.close),
-                          onPressed: onClose,
-                        ),
-                    ],
+                  Text(
+                    'Visited Places',
+                    style: theme.textTheme.titleMedium,
                   ),
                   const SizedBox(height: 4),
                   Text(

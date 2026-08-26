@@ -95,8 +95,19 @@ void main() {
         await tester.tap(find.textContaining('Cairo').first);
         await tester.pumpAndSettle();
 
+        // The city list lives inside the page's vertical scroll view, so on the
+        // narrowest sizes the 'Cairo' tile can render off-screen. Scroll it into
+        // view (and keep it visible) before tapping so the tap actually lands.
+        final cityTile = find.text('Cairo').last;
+        await tester.scrollUntilVisible(
+          cityTile,
+          200,
+          scrollable: find.byType(Scrollable).first,
+        );
+        await tester.pumpAndSettle();
+
         // Select a city from the list.
-        await tester.tap(find.text('Cairo').last);
+        await tester.tap(cityTile);
         await tester.pumpAndSettle();
 
         failIfOverflow(tester.takeException(), '${size.width}x${size.height}');
