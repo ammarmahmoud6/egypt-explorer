@@ -35,3 +35,75 @@ Press CTRL+C to quit
  * Restarting with watchdog (windowsapi)
  * Debugger is active!
  * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\flask_cors\\__init__.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\flask\\typing.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\flask\\globals.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\werkzeug\\_internal.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\visited.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\app.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\app.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\app.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\_smoke_test.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\_smoke_test.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\visited.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\visited.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\visited.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\earthquake_logic.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\simulation.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\random.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'C:\\Users\\Rahma Mohamoud\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages\\flask\\testing.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613
+ * Detected change in 'D:\\python projects\\final project\\final_project\\backend\\visited.py', reloading
+ * Restarting with watchdog (windowsapi)
+ * Debugger is active!
+ * Debugger PIN: 137-057-613

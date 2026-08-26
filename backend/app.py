@@ -11,8 +11,6 @@ No logic is reimplemented here; endpoints just call the existing functions
 and serialize the results as JSON.
 """
 
-import os
-
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
@@ -20,43 +18,10 @@ from data import places, important_places, egypt_cities, cities_info, earthquake
 from earthquake_logic import one_call
 from simulation import simulate_crowd, calculate_visitors, get_crowd_status
 import map_coordinates
+from visited import visited_places, toggle_visited
 
 app = Flask(__name__)
 CORS(app)  # allow cross-origin requests from Flutter web
-
-# ── Visited Places persistence ────────────────────────────────────────────
-# The list of "visited" place names is stored in a local text file so it
-# survives backend restarts. The file lives next to this script.
-VISITED_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visited.txt")
-
-
-def load_visited_from_file():
-    """Read visited place names from visited.txt (creating it if missing).
-
-    Returns a list of non-empty, stripped lines. Pathological lines (blank)
-    and duplicates are filtered out.
-    """
-    if not os.path.exists(VISITED_FILE):
-        open(VISITED_FILE, "w", encoding="utf-8").close()
-        return []
-    visited = []
-    with open(VISITED_FILE, "r", encoding="utf-8") as f:
-        for line in f:
-            name = line.strip()
-            if name and name not in visited:
-                visited.append(name)
-    return visited
-
-
-def save_visited_to_file(visited_list):
-    """Overwrite visited.txt with the given list of visited places, one per line."""
-    with open(VISITED_FILE, "w", encoding="utf-8") as f:
-        for name in visited_list:
-            f.write(name + "\n")
-
-
-# Global visited-places list, loaded once at server startup.
-visited_places = load_visited_from_file()
 
 
 @app.route("/")
@@ -190,15 +155,7 @@ def api_visited_toggle():
     if not name:
         return jsonify({"error": "a non-empty 'name' field is required"}), 400
 
-    if name in visited_places:
-        visited_places.remove(name)
-        status = "removed"
-    else:
-        visited_places.append(name)
-        status = "added"
-
-    # Persist immediately so the change survives a restart.
-    save_visited_to_file(visited_places)
+    status = toggle_visited(name)
 
     return jsonify({"status": status, "visited": visited_places})
 
