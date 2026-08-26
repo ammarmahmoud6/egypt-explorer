@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:final_project/data/egypt_data.dart';
+import 'package:final_project/data/place_images.dart';
 import 'package:final_project/providers/tourism_provider.dart';
 import 'package:final_project/services/backend_service.dart';
 import 'package:final_project/widgets/egypt_map_painter.dart';
@@ -21,61 +22,116 @@ class TourismMapScreen extends StatelessWidget {
   }
 }
 
-class _TourismMapView extends StatelessWidget {
+class _TourismMapView extends StatefulWidget {
   const _TourismMapView();
+
+  @override
+  State<_TourismMapView> createState() => _TourismMapViewState();
+}
+
+class _TourismMapViewState extends State<_TourismMapView> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  // Below this width the visited-places list becomes a collapsible end drawer
+  // instead of a permanent right-hand panel, so the map keeps the screen on
+  // mobile devices ("Tourist Places (n)" still drives the AppBar title).
+  static const double _narrowBreakpoint = 700;
 
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<TourismProvider>();
-    return Scaffold(
-      appBar: AppBar(title: const Text('Tourist Places')),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                hintText: 'Search places...',
-                border: OutlineInputBorder(),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isNarrow = constraints.maxWidth < _narrowBreakpoint;
+
+        final appBar = AppBar(
+          // Dynamic count of places returned by the current search filter.
+          title: Text('Tourist Places (${provider.filteredPlaces.length})'),
+          actions: [
+            // On narrow screens the visited panel lives in an end drawer.
+            if (isNarrow)
+              IconButton(
+                tooltip: 'Visited Places',
+                icon: const Icon(Icons.travel_explore),
+                onPressed: () => _scaffoldKey.currentState?.openEndDrawer(),
               ),
-              onChanged: provider.setSearchQuery,
-            ),
+          ],
+        );
+
+        return Scaffold(
+          key: _scaffoldKey,
+          appBar: appBar,
+          endDrawer: isNarrow
+              ? Drawer(
+                  child: _VisitedPlacesPanel(
+                    provider: provider,
+                    onClose: () => Navigator.of(context).pop(),
+                  ),
+                )
+              : null,
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                    hintText: 'Search places...',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: provider.setSearchQuery,
+                ),
+              ),
+              Expanded(
+                // Map occupies ~80% (flex 4); the visited panel ~20% (flex 1).
+                child: Row(
+                  children: [
+                    Expanded(flex: 4, child: _buildMap(context, provider)),
+                    if (!isNarrow)
+                      Expanded(
+                        flex: 1,
+                        child: _VisitedPlacesPanel(provider: provider),
+                      ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          Expanded(
-            // Map coordinates are loaded from the backend before anything can
-            // be drawn; crowd simulation is a separate request.
-            child: FutureBuilder<MapCoordinates>(
-              future: fetchMapCoordinates(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState != ConnectionState.done) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return _BackendErrorView(
-                    message: '${snapshot.error}',
-                    onRetry: () => provider.loadCrowd(),
-                  );
-                }
-                switch (provider.state) {
-                  case LoadState.loading:
-                    return const Center(child: CircularProgressIndicator());
-                  case LoadState.error:
-                    return _BackendErrorView(
-                      message: provider.error ?? 'Failed to load crowd data',
-                      onRetry: () => provider.loadCrowd(),
-                    );
-                  case LoadState.loaded:
-                    return _TourismMap(
-                      places: provider.filteredPlaces,
-                      coordinates: snapshot.data!,
-                    );
-                }
-              },
-            ),
-          ),
-        ],
-      ),
+        );
+      },
+    );
+  }
+
+  Widget _buildMap(BuildContext context, TourismProvider provider) {
+    // Map coordinates are loaded from the backend before anything can be
+    // drawn; crowd simulation is a separate request.
+    return FutureBuilder<MapCoordinates>(
+      future: fetchMapCoordinates(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return _BackendErrorView(
+            message: '${snapshot.error}',
+            onRetry: () => provider.loadCrowd(),
+          );
+        }
+        switch (provider.state) {
+          case LoadState.loading:
+            return const Center(child: CircularProgressIndicator());
+          case LoadState.error:
+            return _BackendErrorView(
+              message: provider.error ?? 'Failed to load crowd data',
+              onRetry: () => provider.loadCrowd(),
+            );
+          case LoadState.loaded:
+            return _TourismMap(
+              places: provider.filteredPlaces,
+              coordinates: snapshot.data!,
+            );
+        }
+      },
     );
   }
 }
@@ -183,10 +239,20 @@ class _TourismMap extends StatelessWidget {
   }
 
   void _showPlaceSheet(BuildContext context, TouristPlace place) {
-    context.read<TourismProvider>().selectPlace(place);
+    final provider = context.read<TourismProvider>();
+    provider.selectPlace(place);
+    // Color the card's background by the selected place's crowd level:
+    // red = High, green = Low, default/transparent = Medium / none.
+    final backgroundColor = provider.getBackgroundColor(
+      provider.selectedCrowdStatus,
+    );
     showModalBottomSheet(
       context: context,
-      builder: (_) => _PlaceBottomSheet(place: place),
+      builder: (_) => _PlaceBottomSheet(
+        place: place,
+        backgroundColor: backgroundColor,
+        provider: provider,
+      ),
     );
   }
 }
@@ -240,28 +306,77 @@ class _PlaceMarkerState extends State<_PlaceMarker> {
     final x = offsetX + (place.lon - lonMin) * scale;
     final y = offsetY + (latMax - place.lat) * scale;
 
+    // Rich marker: circular photo pin (or emoji fallback) with a thin border.
+    const pinDiameter = 30.0;
+    final imagePaths = placeImages[place.name];
+    final imagePath = (imagePaths != null && imagePaths.isNotEmpty)
+        ? imagePaths.first
+        : null;
+
     return Positioned(
-      left: x - 10,
-      top: y - 10,
+      left: x - pinDiameter / 2,
+      top: y - pinDiameter / 2,
       child: GestureDetector(
         onTap: widget.onTap,
         child: FutureBuilder<String>(
           future: _statusFuture,
           builder: (context, snapshot) {
-            final color = snapshot.hasData
+            final pinColor = snapshot.hasData
                 ? _crowdColor(snapshot.data!)
                 : Colors.grey;
-            return Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2),
-                boxShadow: const [
-                  BoxShadow(color: Colors.black38, blurRadius: 3),
-                ],
-              ),
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Pin frame: circular photo crop with a thin crowd-colored border.
+                Container(
+                  width: pinDiameter,
+                  height: pinDiameter,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                    border: Border.all(color: pinColor, width: 2.5),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black45,
+                        blurRadius: 4,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: imagePath != null
+                      ? Image.asset(
+                          imagePath,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => const _PinEmoji(),
+                        )
+                      : const _PinEmoji(),
+                ),
+                // Label pill underneath, centered on the point.
+                Container(
+                  constraints: const BoxConstraints(maxWidth: 120),
+                  margin: const EdgeInsets.only(top: 3),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(9),
+                  ),
+                  child: Text(
+                    place.name,
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             );
           },
         ),
@@ -283,10 +398,28 @@ class _PlaceMarkerState extends State<_PlaceMarker> {
   }
 }
 
+/// Stylized emoji/icon fallback shown when a place has no bundled photo.
+class _PinEmoji extends StatelessWidget {
+  const _PinEmoji();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text('🏛️', style: TextStyle(fontSize: 16)),
+    );
+  }
+}
+
 class _PlaceBottomSheet extends StatelessWidget {
   final TouristPlace place;
+  final Color backgroundColor;
+  final TourismProvider provider;
 
-  const _PlaceBottomSheet({required this.place});
+  const _PlaceBottomSheet({
+    required this.place,
+    required this.backgroundColor,
+    required this.provider,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -296,12 +429,19 @@ class _PlaceBottomSheet extends StatelessWidget {
       fetchVisitors(capacity: place.capacity, crowd: place.crowd),
       fetchCrowdStatus(crowd: place.crowd),
     ]);
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    // The card's background animates to reflect the crowd level of the
+    // selected place (red = High, green = Low, default = Medium/none).
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      color: backgroundColor,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
           // Image gallery (carousel) if the place has photos, otherwise
           // fall back to the placeholder (solid color + icon + name).
           if (place.imagePaths.isNotEmpty)
@@ -332,7 +472,34 @@ class _PlaceBottomSheet extends StatelessWidget {
               ),
             ),
           const SizedBox(height: 16),
-          Text(place.name, style: theme.textTheme.titleLarge),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Text(place.name, style: theme.textTheme.titleLarge),
+              ),
+              // Toggle this place in / out of the visited list (persisted by
+              // the backend in visited.txt).
+              ListenableBuilder(
+                listenable: provider,
+                builder: (context, _) {
+                  final visited = provider.isVisited(place.name);
+                  return IconButton(
+                    tooltip: visited
+                        ? 'Remove from Visited Places'
+                        : 'Mark as visited',
+                    icon: Icon(
+                      visited
+                          ? Icons.check_circle
+                          : Icons.bookmark_add_outlined,
+                    ),
+                    color: visited ? Colors.green : null,
+                    onPressed: () => provider.toggleVisited(place.name),
+                  );
+                },
+              ),
+            ],
+          ),
           const SizedBox(height: 8),
           Text('Capacity: ${place.capacity}'),
           FutureBuilder<List<dynamic>>(
@@ -393,7 +560,114 @@ class _PlaceBottomSheet extends StatelessWidget {
             const SizedBox(height: 8),
             Text(place.description!),
           ],
-        ],
+          ],
+        ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Panel listing the places the user has marked as visited. Each entry can be
+/// tapped to remove it (toggling it off on the backend).
+///
+/// Used either as a persistent right-hand column on wide screens or inside an
+/// end drawer on narrow / mobile screens (via [onClose]).
+class _VisitedPlacesPanel extends StatelessWidget {
+  final TourismProvider provider;
+
+  /// Optional callback shown as a close button (used in the narrow drawer).
+  final VoidCallback? onClose;
+
+  const _VisitedPlacesPanel({required this.provider, this.onClose});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return ColoredBox(
+      color: theme.colorScheme.surfaceContainerLow,
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
+          child: ListenableBuilder(
+            listenable: provider,
+            builder: (context, _) {
+              final visited = provider.visitedPlaces;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'Visited Places',
+                          style: theme.textTheme.titleMedium,
+                        ),
+                      ),
+                      if (onClose != null)
+                        IconButton(
+                          tooltip: 'Close',
+                          icon: const Icon(Icons.close),
+                          onPressed: onClose,
+                        ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    '${visited.length} place${visited.length == 1 ? '' : 's'} visited',
+                    style: theme.textTheme.bodySmall,
+                  ),
+                  const Divider(height: 16),
+                  if (visited.isEmpty)
+                    Expanded(
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.travel_explore,
+                              size: 48,
+                              color: theme.colorScheme.outline,
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              'No places visited yet.\nTap the bookmark icon on '
+                              'a place to add it here.',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  else
+                    Expanded(
+                      child: ListView.separated(
+                        itemCount: visited.length,
+                        separatorBuilder: (_, _) => const Divider(height: 1),
+                        itemBuilder: (context, index) {
+                          final name = visited[index];
+                          return ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            dense: true,
+                            leading: Icon(
+                              Icons.check_circle,
+                              color: Colors.green,
+                            ),
+                            title: Text(name),
+                            trailing: const Icon(
+                              Icons.remove_circle_outline,
+                            ),
+                            onTap: () => provider.toggleVisited(name),
+                          );
+                        },
+                      ),
+                    ),
+                ],
+              );
+            },
+          ),
+        ),
       ),
     );
   }

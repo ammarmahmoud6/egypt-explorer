@@ -50,8 +50,10 @@ class _EarthquakeExplorerViewState extends State<_EarthquakeExplorerView> {
     final provider = context.watch<EarthquakeProvider>();
     return Scaffold(
       appBar: AppBar(title: const Text('Earthquake Explorer')),
-      body: Column(
-        children: [
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
           // Earthquake selection cards.
           Padding(
             padding: const EdgeInsets.all(8),
@@ -70,46 +72,47 @@ class _EarthquakeExplorerViewState extends State<_EarthquakeExplorerView> {
               ],
             ),
           ),
-          // Story / short tag display (scrollable so long stories never push
-          // the rest of the column past the available height).
+          // Expandable story panel: collapsed by default so it never takes
+          // vertical space away from the map; tap to read the full story.
           if (provider.selectedEvent != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 90),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        provider.selectedEvent!.shortTag,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        provider.selectedEvent!.story,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
-                  ),
+            Card(
+              margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+              elevation: 1,
+              child: ExpansionTile(
+                key: ValueKey('event-${provider.selectedEvent!.id}'),
+                leading: const Icon(Icons.info_outline),
+                title: Text(
+                  provider.selectedEvent!.shortTag,
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
+                subtitle: const Text('Tap to read the full story'),
+                childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      provider.selectedEvent!.story,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                ],
               ),
             ),
-          // Map. Flexible (not Expanded) so it shares leftover vertical space
-          // with the city list instead of forcing the fixed sections to
-          // overflow on small screens.
-          Flexible(
-            flex: 3,
+          // Map — fixed height inside the scrollable page (so the whole page
+          // can scroll instead of being squeezed against the viewport).
+          SizedBox(
+            height: 360,
             child: Stack(
               fit: StackFit.expand,
               children: [
                 CustomPaint(
-                  size: Size.infinite,
                   painter: EgyptMapPainter(
                     coordinates: provider.mapCoordinates,
                     selectedEvent: provider.selectedEvent,
                     selectedCity: provider.selectedCity,
-                    zoomBounds: provider.zoomBounds,
+                    // Intentionally no zoomBounds: the map keeps a fixed
+                    // full-Egypt view instead of zooming/magnifying when a
+                    // city or event is tapped.
                     cities: provider.cities,
                   ),
                 ),
@@ -143,24 +146,15 @@ class _EarthquakeExplorerViewState extends State<_EarthquakeExplorerView> {
               onChanged: (value) => setState(() => _searchQuery = value),
             ),
           ),
-          // Flexible so the list shares leftover vertical space with the map
-          // instead of forcing a fixed height that can overflow small screens.
-          Flexible(
-            flex: 2,
-            child: ListView.builder(
-              itemCount: _filteredCities.length,
-              itemBuilder: (context, index) {
-                final city = _filteredCities[index];
-                final selected = provider.selectedCity?.name == city.name;
-                return ListTile(
-                  dense: true,
-                  title: Text(city.name),
-                  selected: selected,
-                  onTap: () => provider.selectCity(city),
-                );
-              },
+          // City list — plain column inside the outer scroll view (the outer
+          // SingleChildScrollView owns scrolling, so this stays non-scrollable).
+          for (final city in _filteredCities)
+            ListTile(
+              dense: true,
+              title: Text(city.name),
+              selected: provider.selectedCity?.name == city.name,
+              onTap: () => provider.selectCity(city),
             ),
-          ),
           // Reset button.
           Padding(
             padding: const EdgeInsets.all(8),
@@ -178,6 +172,7 @@ class _EarthquakeExplorerViewState extends State<_EarthquakeExplorerView> {
             ),
           ),
         ],
+        ),
       ),
     );
   }
@@ -334,18 +329,40 @@ class _CityInfoPanel extends StatelessWidget {
       );
     }
 
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(12),
+    // Compact title for the collapsible profile panel.
+    final String title;
+    if (city == null) {
+      title = 'City profile';
+    } else {
+      title = city.name;
+    }
+
+    return Card(
+      margin: EdgeInsets.zero,
+      elevation: 0,
       color: theme.colorScheme.surfaceContainerHighest,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          // Cap the panel at ~1/3 of the viewport height so the stats text
-          // scrolls instead of overflowing/clipping when an earthquake and a
-          // city are both selected.
-          maxHeight: MediaQuery.sizeOf(context).height / 3,
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      child: ExpansionTile(
+        key: ValueKey('city-${city?.name ?? 'none'}-${event?.id ?? 'none'}'),
+        leading: const Icon(Icons.location_city),
+        title: Text(title),
+        subtitle: Text(
+          city == null
+              ? 'Select a city to read its profile'
+              : 'City profile — tap to expand/collapse',
         ),
-        child: SingleChildScrollView(child: content),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+        children: [
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              // Cap the panel at ~1/3 of the viewport height so the stats text
+              // scrolls instead of overflowing/clipping when an earthquake and
+              // a city are both selected.
+              maxHeight: MediaQuery.sizeOf(context).height / 3,
+            ),
+            child: SingleChildScrollView(child: content),
+          ),
+        ],
       ),
     );
   }

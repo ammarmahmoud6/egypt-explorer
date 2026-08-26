@@ -17,6 +17,7 @@
 library;
 
 import 'dart:convert';
+import 'dart:developer' show log;
 
 import 'package:final_project/data/egypt_data.dart';
 import 'package:final_project/data/place_images.dart';
@@ -161,6 +162,27 @@ Future<Map<String, dynamic>> _getJson(
   return jsonDecode(response.body) as Map<String, dynamic>;
 }
 
+Future<Map<String, dynamic>> _postJson(
+  String path,
+  Map<String, dynamic> body,
+) async {
+  final uri = Uri.parse(backendBaseUrl).replace(path: path);
+  late http.Response response;
+  try {
+    response = await _client.post(
+      uri,
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(body),
+    );
+  } catch (e) {
+    throw BackendException('Could not reach the backend at $uri');
+  }
+  if (response.statusCode != 200) {
+    throw BackendException('Backend error ${response.statusCode} for $path');
+  }
+  return jsonDecode(response.body) as Map<String, dynamic>;
+}
+
 /// GET /api/places — tourist places from Python `data.py`.
 Future<List<TouristPlace>> fetchPlaces() async {
   final json = await _getJson('/api/places');
@@ -259,4 +281,41 @@ Future<int> fetchVisitors({required int capacity, required int crowd}) async {
 Future<String> fetchCrowdStatus({required int crowd}) async {
   final json = await _getJson('/api/crowd/status', {'crowd': crowd.toString()});
   return json['status'] as String;
+}
+
+/// GET /api/visited — list of places the user marked as visited.
+///
+/// Never throws: on a backend error (non-200, e.g. 404) or a network failure
+/// it logs a warning and returns an empty list so the rest of the app (map,
+/// crowd data) is unaffected.
+Future<List<String>> fetchVisitedPlaces() async {
+  try {
+    final json = await _getJson('/api/visited');
+    return (json['visited'] as List).cast<String>();
+  } catch (e) {
+    log(
+      'fetchVisitedPlaces failed; returning empty list: $e',
+      name: 'backend_service',
+    );
+    return const [];
+  }
+}
+
+/// POST /api/visited — toggles a place in the visited list on the backend.
+///
+/// Returns the full decoded response, e.g.
+/// `{"status": "added", "visited": [...]}`, or `null` when the backend is
+/// unreachable / returns a non-200 status. A `null` result lets the caller
+/// fall back gracefully (e.g. toggle locally) without throwing and breaking
+/// state.
+Future<Map<String, dynamic>?> toggleVisitedPlace(String placeName) async {
+  try {
+    return await _postJson('/api/visited', {'name': placeName});
+  } catch (e) {
+    log(
+      'toggleVisitedPlace failed; caller should fall back locally: $e',
+      name: 'backend_service',
+    );
+    return null;
+  }
 }
