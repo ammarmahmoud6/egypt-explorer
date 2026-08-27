@@ -196,22 +196,34 @@ class _TourismMap extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final size = Size(constraints.maxWidth, constraints.maxHeight);
-        return GestureDetector(
-          onTapUp: (details) {
-            _handleTap(context, details.localPosition, size);
-          },
-          child: CustomPaint(
-            size: size,
-            painter: EgyptMapPainter(coordinates: coordinates),
-            child: Stack(
-              children: [
-                for (final place in places)
-                  _PlaceMarker(
-                    place: place,
-                    size: size,
-                    onTap: () => _showPlaceSheet(context, place),
-                  ),
-              ],
+        // InteractiveViewer makes the map zoomable/pannable ("zoom in / out").
+        // The map painter and the markers all live inside this single child, so
+        // scaling the child scales them together and they stay aligned. Because
+        // the child is viewport-sized, allow a generous margin so the user can
+        // pan freely once zoomed in. Tap-to-open still works: pointer events are
+        // transformed back into the child's local (unscaled) coordinate space.
+        return InteractiveViewer(
+          minScale: 1.0,
+          maxScale: 8.0,
+          boundaryMargin: const EdgeInsets.all(double.infinity),
+          clipBehavior: Clip.none,
+          child: GestureDetector(
+            onTapUp: (details) {
+              _handleTap(context, details.localPosition, size);
+            },
+            child: CustomPaint(
+              size: size,
+              painter: EgyptMapPainter(coordinates: coordinates),
+              child: Stack(
+                children: [
+                  for (final place in places)
+                    _PlaceMarker(
+                      place: place,
+                      size: size,
+                      onTap: () => _showPlaceSheet(context, place),
+                    ),
+                ],
+              ),
             ),
           ),
         );
